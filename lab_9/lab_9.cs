@@ -31,7 +31,7 @@ namespace lab_9
 
         public static string CheckChar(string word)
         {
-                if (Regex.IsMatch(word, @"^([A - Za - z]) *"))
+                if (Regex.IsMatch(word, @"([A-Z][a-z])*"))
                 {
                     Console.WriteLine();
                 }

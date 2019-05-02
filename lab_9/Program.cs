@@ -27,10 +27,10 @@ namespace lab_9
                
 
 
-                beg:
+                
                 Console.WriteLine("Welcome to out C# class. 1.)Would you like to add another student or 2.) learn about current students ?");
                 int num1 = int.Parse(Console.ReadLine());
-                string char1 = Console.ReadLine();
+                
                 //1
                 if(num1== 1)
                 {
@@ -56,7 +56,7 @@ namespace lab_9
                             }
                         }
 
-
+                        
                         Console.WriteLine("Where is there hometown ?");
                         string newName1 = Console.ReadLine();
                         try
@@ -101,17 +101,20 @@ namespace lab_9
                             homeTown.Add(newName1);
                             faveFood.Add(newName2);
                             faveColor.Add(newName3);
+                            doThis = false;
                         }
                         else
                         {
                             Console.WriteLine("Please re-enter information.");
                         }
-
+                        
                     }
                 }
-                else if (char1 == "b")
+                else if (num1 == 2)
                 {
 
+                    Console.WriteLine("What student would you like to learn about ?");
+                    num1 = int.Parse(Console.ReadLine());
 
                     try
                     {
@@ -124,118 +127,34 @@ namespace lab_9
 
                     }
 
-
-
-
-                    //1[0]
-                    if (num1 == 1)
-                    {
-                        Console.WriteLine($" Student 1 is {peopleList[0]} \nWhat would you like to know about {peopleList[0]} (type food or homewtown)");
+                        Console.WriteLine($" Student 1 is {peopleList[num1 -1]} \nWhat would you like to know about {peopleList[num1 -1]} (type food or homewtown)");
                         string word = Console.ReadLine();
 
-
-                        do
+                        
+                        while(word.ToLower() != "hometown" || word.ToLower() != "food")
                         {
-                            if (word.ToLower() == "hometown")
-                            {
-                                Console.WriteLine($"{peopleList[0]}'s  hometown is {homeTown[0]}.\n Would you like to know more ? (y/n)");
-                                string yesno = Console.ReadLine();
-                                if (yesno == "y")
-                                {
-                                    goto beg;
-                                }
-                            }
-                            else if (word.ToLower() == "food")
-                            {
-                                Console.WriteLine($" {peopleList[0]}'s favorite food is {faveFood[0]}. \n Would you like to know more ?");
-                                string yesno = Console.ReadLine();
-                                if (yesno == "y")
-                                {
-                                    goto beg;
-                                }
-                            }
-
                             Console.WriteLine("the data does not exist please try again . enter food or hometown.");
-
+                            word = Console.ReadLine();
                         }
-                        while (word != "hometown" || word != "food");
-                        {
-
-
-                        }
-
-                    }
-
-
-
-                    //2[1]
-
-
-                    else if (num1 == 2)
+                    if (word.ToLower() == "hometown")
                     {
-                        Console.WriteLine($" Student 2 is {peopleList[1]} \nWhat would you like to know about {peopleList[1]}");
-                        string word = Console.ReadLine();
-
-
-                        if (word == "hometown")
+                        Console.WriteLine($"{peopleList[num1 - 1]}'s  hometown is {homeTown[num1 - 1]}.\n Would you like to know more ? (y/n)");
+                        string yesno = Console.ReadLine();
+                        if (yesno == "y")
                         {
-                            Console.WriteLine($"{peopleList[1]}'s  hometown is {homeTown[1]}");
-                        }
-                        else if (word == "food")
-                        {
-                            Console.WriteLine($"{peopleList[1]}'s favorite food is {faveFood[1]}. Would you like to know more (y/n)");
-                            string yesno = Console.ReadLine();
-                            if (yesno == "y")
-                            {
-                                goto beg;
-                            }
+
                         }
                     }
-                    //3[2]
-                    else if (num1 == 3)
+                    else if (word.ToLower() == "food")
                     {
-                        Console.WriteLine($" Student 1 is {peopleList[2]} \nWhat would you like to know about {peopleList[2]}");
-                        string word = Console.ReadLine();
-
-
-                        if (word == "hometown")
+                        Console.WriteLine($" {peopleList[num1 - 1]}'s favorite food is {faveFood[num1 - 1]}. \n Would you like to know more ?");
+                        string yesno = Console.ReadLine();
+                        if (yesno == "y")
                         {
-                            Console.WriteLine($"{peopleList[2]}'s  hometown is {homeTown[2]}");
-                        }
-                        else if (word == "food")
-                        {
-                            Console.WriteLine($"{peopleList[2]}'s favorite food is {faveFood[2]}. Would you like to know more (y/n) ?");
-                            string yesno = Console.ReadLine();
-                            if (yesno == "y")
-                            {
-                                goto beg;
-                            }
+
                         }
                     }
-                    //4[3]
-                    else if (num1 == 4)
-                    {
-                        Console.WriteLine($" Student 1 is {peopleList[3]} \nWhat would you like to know about {peopleList[3]}");
-                        string word = Console.ReadLine();
-
-
-                        if (word == "hometown")
-                        {
-                            Console.WriteLine($"{peopleList[3]}'s  hometown is {homeTown[3]}");
-                        }
-                        else if (word == "food")
-                        {
-                            Console.WriteLine($"{peopleList[3]}'s favorite food is {faveFood[3]}. Would you like to know more (y/n) ?");
-                            string yesno = Console.ReadLine();
-                            if (yesno == "y")
-                            {
-                                goto beg;
-                            }
-                        }
-
-
-
-                    }
+                    
                 }
                 Console.WriteLine("Do you want to continue ? (y/n)");
                 string response = Console.ReadLine();
